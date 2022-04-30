@@ -3,11 +3,13 @@
   "prettier.singleQuote": true,
   "editor.wordWrap": "on",
   "emmet.includeLanguages": {
-      "javascript": "javascriptreact"
+    "javascript": "javascriptreact"
   },
   "editor.tabSize": 2,
   "editor.bracketPairColorization.enabled": true,
   "editor.formatOnSave": true,
   "javascript.format.semicolons": "insert",
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "reactSnippets.settings.prettierEnabled": true,
+  "reactSnippets.settings.importReactOnTop": false
 }
