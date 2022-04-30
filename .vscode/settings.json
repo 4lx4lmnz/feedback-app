@@ -11,5 +11,6 @@
   "javascript.format.semicolons": "insert",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "reactSnippets.settings.prettierEnabled": true,
-  "reactSnippets.settings.importReactOnTop": false
+  "reactSnippets.settings.importReactOnTop": false,
+  "editor.colorDecorators": true
 }
