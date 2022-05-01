@@ -1,20 +1,20 @@
-import { useState } from 'react';
+import PropTypes from 'prop-types';
 
-function FeedbackItem() {
-  const [rating, setRating] = useState(0);
-  const [text, setText] = useState('This is an example of a feedback item.');
-
-  const handleClick = (e) => {
-    setRating((prev) => prev + 1);
-  };
-
+function FeedbackItem({ item }) {
   return (
     <div className='card'>
-      <div className='num-display'>{rating}</div>
-      <div className='text-display'>{text}</div>
-      <button onClick={handleClick}>Click</button>
+      <div className='num-display'>{item.rating}</div>
+      <div className='text-display'>{item.text}</div>
     </div>
   );
 }
+
+FeedbackItem.propTypes = {
+  item: PropTypes.exact({
+    id: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+  }),
+};
 
 export default FeedbackItem;
