@@ -4,8 +4,23 @@ import Button from './shared/Button';
 
 function FeedbackForm() {
   const [text, setText] = useState('');
+  const [btnDisabled, setBtnDisabled] = useState(true);
+  const [message, setMessage] = useState('');
 
   const handleTextChange = (e) => {
+    // This is checking the length of the prior input, so what the user sees does not align with actual state
+    if (text === '') {
+      setBtnDisabled(true);
+      setMessage(null);
+    } else if (text !== '' && text.trim().length <= 10) {
+      // length <= 10 is actually 'Text must be greater than 10 char'
+      setMessage('Text must be at least 10 characters');
+      setBtnDisabled(true);
+    } else {
+      setMessage(null);
+      setBtnDisabled(false);
+    }
+
     setText(e.target.value);
   };
 
@@ -21,8 +36,11 @@ function FeedbackForm() {
             placeholder='Write a review'
             value={text}
           />
-          <Button type='submit'>Send</Button>
+          <Button type='submit' isDisabled={btnDisabled}>
+            Send
+          </Button>
         </div>
+        {message && <div className='message'>{message}</div>}
       </form>
     </Card>
   );
