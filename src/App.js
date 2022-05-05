@@ -13,7 +13,7 @@ import AboutIconLink from './components/AboutIconLink';
 function App() {
   const [feedback, setFeedback] = useState(FeedbackData);
 
-  const addFeedaback = (newFeedback) => {
+  const addFeedback = (newFeedback) => {
     // give a unique id
     newFeedback.id = uuidv4();
     // cant push onto feedback, immutable, must use spread to recreate array
@@ -37,7 +37,7 @@ function App() {
             path='/'
             element={
               <>
-                <FeedbackForm handleAdd={addFeedaback} />
+                <FeedbackForm handleAdd={addFeedback} />
                 <FeedbackStats feedback={feedback} />
                 <FeedbackList
                   feedback={feedback}
