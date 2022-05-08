@@ -12,5 +12,6 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "reactSnippets.settings.prettierEnabled": true,
   "reactSnippets.settings.importReactOnTop": false,
-  "editor.colorDecorators": true
+  "editor.colorDecorators": true,
+  "cSpell.words": ["uuidv"]
 }
