@@ -23,13 +23,8 @@ export const FeedbackProvider = ({ children }) => {
       'http://localhost:5000/feedback?_sort=id&order=desc'
     );
     const data = await response.json();
-
-    console.log('fetchFeedback: Simulate load...');
-    setTimeout(() => {
       setFeedback(data);
       setIsLoading(false);
-    }, 3000);
-    console.log('fetchFeedback: ...complete simulate load.');
   };
 
   // Add feedback
