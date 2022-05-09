@@ -4,9 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
-  // Says there are other ways to set state, such as a reducer, but uses state hook for now
-  const [feedback, setFeedback] = useState(FeedbackData);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const [feedback, setFeedback] = useState([]);
   const [feedbackEdit, setFeedbackEdit] = useState({
     item: {},
     edit: false,
@@ -19,11 +18,18 @@ export const FeedbackProvider = ({ children }) => {
 
   // Fetch feedback
   const fetchFeedback = async () => {
+    setIsLoading(true);
     const response = await fetch(
       'http://localhost:5000/feedback?_sort=id&order=desc'
     );
     const data = await response.json();
-    setFeedback(data);
+
+    console.log('fetchFeedback: Simulate load...');
+    setTimeout(() => {
+      setFeedback(data);
+      setIsLoading(false);
+    }, 3000);
+    console.log('fetchFeedback: ...complete simulate load.');
   };
 
   // Add feedback
@@ -60,6 +66,7 @@ export const FeedbackProvider = ({ children }) => {
       value={{
         feedback,
         feedbackEdit,
+        isLoading,
         addFeedback,
         deleteFeedback,
         editFeedback,
