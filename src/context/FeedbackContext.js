@@ -47,17 +47,30 @@ export const FeedbackProvider = ({ children }) => {
       });
 
       if (response.ok) {
-      setFeedback(feedback.filter((item) => item.id !== id));
+        setFeedback(feedback.filter((item) => item.id !== id));
       }
     }
   };
 
   // Update feedback item
-  const updateFeedback = (id, updItem) => {
-    setFeedback(
-      feedback.map((item) => (item.id === id ? { ...item, ...updItem } : item))
-    );
-    feedbackEdit.edit = false;
+  const updateFeedback = async (id, updItem) => {
+    const response = await fetch(`/feedback/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(updItem),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      setFeedback(
+        feedback.map((item) => (item.id === id ? { ...item, ...data } : item))
+      );
+
+      setFeedbackEdit({
+        item: {},
+        edit: false,
+      });
+    }
   };
 
   // Set item to edit
