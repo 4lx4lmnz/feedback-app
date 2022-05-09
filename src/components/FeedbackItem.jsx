@@ -23,7 +23,7 @@ function FeedbackItem({ item }) {
 
 FeedbackItem.propTypes = {
   item: PropTypes.exact({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     text: PropTypes.string.isRequired,
   }).isRequired,
